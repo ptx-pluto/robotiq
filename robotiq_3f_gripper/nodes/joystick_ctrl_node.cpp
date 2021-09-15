@@ -31,7 +31,7 @@ struct joystick_ctrl_node_t  {
 
     ros::Time latest_input_ts;
 
-    double vel_ratio = 40;
+    double vel_ratio = 50;
 
     // state
     ros::Time ts;
@@ -77,11 +77,10 @@ struct joystick_ctrl_node_t  {
     }
 
     void on_js( sensor_msgs::JoyConstPtr const & msg ){
-
-      vel_a = vel_ratio * msg->axes.at(4);
+      vel_a = vel_ratio * msg->axes.at(0);
       vel_b = vel_ratio * msg->axes.at(1);
-      vel_s = vel_ratio * 2 * msg->axes.at(0);
-
+      vel_c = vel_ratio * msg->axes.at(4);
+      vel_s = vel_ratio * 2 * msg->axes.at(3);
     }
 
     void on_input( Robotiq3FGripperRobotInput::ConstPtr const & msg ){

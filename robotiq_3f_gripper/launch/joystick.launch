@@ -1,0 +1,11 @@
+<launch>
+  <node pkg="robotiq_3f_gripper" type="joystick_ctrl_node" name="joystick_ctrl_node" output="screen"/>
+  <node pkg="robotiq_3f_gripper_control" type="Robotiq3FGripperTcpNode.py" name="Robotiq3FGripperTcpNode" args="192.168.1.11" output="screen"/>
+  <node pkg="rqt_multiplot" type="rqt_multiplot" name="rqt_multiplot" output="log" required="false"
+          args="--multiplot-config $(find robotiq_3f_gripper)/config/rqt_multiplot_input.xml --multiplot-run-all"/>
+
+        <node pkg="joy" type="joy_node" name="joy_node" output="screen">
+            <param name="~autorepeat_rate" value="30" />
+        </node>
+
+</launch>

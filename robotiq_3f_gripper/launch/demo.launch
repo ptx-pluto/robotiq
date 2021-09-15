@@ -1,4 +1,6 @@
 <launch>
   <node pkg="robotiq_3f_gripper_control" type="Robotiq3FGripperSimpleController.py" name="Robotiq3FGripperSimpleController" output="screen"/>
   <node pkg="robotiq_3f_gripper_control" type="Robotiq3FGripperTcpNode.py" name="Robotiq3FGripperTcpNode" args="192.168.1.11" output="screen"/>
+  <node pkg="rqt_multiplot" type="rqt_multiplot" name="rqt_multiplot" output="log" required="false"
+          args="--multiplot-config $(find robotiq_3f_gripper)/config/rqt_multiplot_input.xml --multiplot-run-all"/>
 </launch>
